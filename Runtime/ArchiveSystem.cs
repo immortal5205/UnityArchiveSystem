@@ -1601,14 +1601,16 @@ namespace NuoYan.Archive
             /// <returns></returns>
             void Unregister(IArchive data) => Instance.Unregister(data);
             /// <summary>
-            /// 将数据传到存档系统
+            /// 如果一个物体常驻场景则此方法将数据传到存档系统
             /// </summary>
+            /// <remarks>若物体为数据生成，则此方法为从存档获得数据</remarks>
             /// <param name="data1"></param>
             /// <param name="data2"></param>
             void GetData(T1 data1, T2 data2);
             /// <summary>
-            /// 从存档系统获取数据
+            /// 如果一个物体常驻场景则此方法从存档系统获取数据 
             /// </summary>
+            /// <remarks>若物体为数据生成，则此方法将数据传到存档系统</remarks>
             /// <param name="data1"></param>
             /// <param name="data2"></param>
             void SetData(T1 data1, T2 data2);
