@@ -26,6 +26,7 @@ namespace NuoYan.Archive
         private List<T1> m_ArchiveDataList = new List<T1>();
         [SerializeField]
         private T1 m_CurrentArchiveData = new T1();
+        public T1 CurrentArchiveData => m_CurrentArchiveData;
         private string m_MainFolderPath;
 
         /// <summary>
@@ -296,6 +297,7 @@ namespace NuoYan.Archive
                 }
                 else
                 {
+                    SaveSingle();
                     RaiseError(ArchiveErrorType.FileNotFound, $"存档文件不存在: {filePath}");
                 }
             }
@@ -630,6 +632,7 @@ namespace NuoYan.Archive
                 }
                 else
                 {
+                    SaveMultiple();
                     Debug.LogError($"存档表文件不存在: {archiveTablePath}");
                 }
             }
@@ -762,8 +765,10 @@ namespace NuoYan.Archive
         private List<T2> m_ArchiveDataList2 = new List<T2>();
         [SerializeField]
         private T1 m_CurrentArchiveData1 = new T1();
+        public T1 CurrentArchiveData1 => m_CurrentArchiveData1;
         [SerializeField]
         private T2 m_CurrentArchiveData2 = new T2();
+        public T2 CurrentArchiveData2 => m_CurrentArchiveData2;
         private string m_MainFolderPath;
 
         /// <summary>
@@ -1627,10 +1632,13 @@ namespace NuoYan.Archive
         private List<T3> m_ArchiveDataList3 = new List<T3>();
         [SerializeField]
         private T1 m_CurrentArchiveData1 = new T1();
+        public T1 CurrentArchiveData1 => m_CurrentArchiveData1;
         [SerializeField]
         private T2 m_CurrentArchiveData2 = new T2();
+        public T2 CurrentArchiveData2 => m_CurrentArchiveData2;
         [SerializeField]
         private T3 m_CurrentArchiveData3 = new T3();
+        public T3 CurrentArchiveData3 => m_CurrentArchiveData3;
         private string m_MainFolderPath;
 
         /// <summary>
