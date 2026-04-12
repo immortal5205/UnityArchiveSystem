@@ -174,7 +174,7 @@ namespace NuoYan.Archive
                         Instance.m_CurrentArchiveData = JsonConvert.DeserializeObject<T1>(json);
                         foreach (var data in Instance.m_ArchiveList)
                         {
-                            data.SetData(Instance.m_CurrentArchiveData);
+                            data.GetData(Instance.m_CurrentArchiveData);
                         }
                     }
                 }
@@ -201,7 +201,7 @@ namespace NuoYan.Archive
             {
                 foreach (var data in m_ArchiveList)
                 {
-                    data.GetData(m_CurrentArchiveData);
+                    data.SetData(m_CurrentArchiveData);
                 }
                 string json = JsonConvert.SerializeObject(m_CurrentArchiveData);
                 if (m_ArchiveSetting.EncryptionType == EncryptionType.AES)
@@ -238,7 +238,7 @@ namespace NuoYan.Archive
                 {
                     foreach (var data in m_ArchiveList)
                     {
-                        data.GetData(m_CurrentArchiveData);
+                        data.SetData(m_CurrentArchiveData);
                     }
                     string json = JsonConvert.SerializeObject(m_CurrentArchiveData);
                     if (m_ArchiveSetting.EncryptionType == EncryptionType.AES)
@@ -291,7 +291,7 @@ namespace NuoYan.Archive
                         m_CurrentArchiveData = JsonConvert.DeserializeObject<T1>(json);
                         foreach (var data in m_ArchiveList)
                         {
-                            data.SetData(m_CurrentArchiveData);
+                            data.GetData(m_CurrentArchiveData);
                         }
                     }
                 }
@@ -321,7 +321,7 @@ namespace NuoYan.Archive
                 m_CurrentArchiveData = new T1();
                 foreach (var data in m_ArchiveList)
                 {
-                    data.GetData(m_CurrentArchiveData);
+                    data.SetData(m_CurrentArchiveData);
                 }
                 m_CurrentArchiveData.TimeStamp = archiveTable.TimeStamp;
                 // 检查是否已存在相同时间戳的存档
@@ -387,7 +387,7 @@ namespace NuoYan.Archive
                 m_CurrentArchiveData = new T1();
                 foreach (var data in m_ArchiveList)
                 {
-                    data.GetData(m_CurrentArchiveData);
+                    data.SetData(m_CurrentArchiveData);
                 }
                 m_CurrentArchiveData.TimeStamp = archiveTable.TimeStamp;
                 // 检查是否已存在相同时间戳的存档
@@ -457,7 +457,7 @@ namespace NuoYan.Archive
                     m_CurrentArchiveData = new T1();
                     foreach (var data in m_ArchiveList)
                     {
-                        data.GetData(m_CurrentArchiveData);
+                        data.SetData(m_CurrentArchiveData);
                     }
                     m_CurrentArchiveData.TimeStamp = archiveTable.TimeStamp;
                     // 检查是否已存在相同时间戳的存档
@@ -514,7 +514,7 @@ namespace NuoYan.Archive
                     m_CurrentArchiveData = new T1();
                     foreach (var data in m_ArchiveList)
                     {
-                        data.GetData(m_CurrentArchiveData);
+                        data.SetData(m_CurrentArchiveData);
                     }
                     m_CurrentArchiveData.TimeStamp = archiveTable.TimeStamp;
                     // 检查是否已存在相同时间戳的存档
@@ -622,7 +622,7 @@ namespace NuoYan.Archive
                         }
                         foreach (var data in m_ArchiveList)
                         {
-                            data.SetData(m_CurrentArchiveData);
+                            data.GetData(m_CurrentArchiveData);
                         }
                     }
                     else
@@ -746,7 +746,15 @@ namespace NuoYan.Archive
         {
             void Register(IArchive data) => Instance.Register(data);
             void Unregister(IArchive data) => Instance.Unregister(data);
+            /// <summary>
+            /// 获得存档数据
+            /// </summary>
+            /// <param name="data"></param>
             void GetData(T1 data);
+            /// <summary>
+            /// 设置存档数据
+            /// </summary>
+            /// <param name="data"></param>
             void SetData(T1 data);
         }
     }
@@ -1601,13 +1609,13 @@ namespace NuoYan.Archive
             /// <returns></returns>
             void Unregister(IArchive data) => Instance.Unregister(data);
             /// <summary>
-            /// 将数据传到存档系统
+            /// 从存档系统获取数据
             /// </summary>
             /// <param name="data1"></param>
             /// <param name="data2"></param>
             void GetData(T1 data1, T2 data2);
             /// <summary>
-            /// 从存档系统获取数据
+            /// 将数据传到存档系统
             /// </summary>
             /// <param name="data1"></param>
             /// <param name="data2"></param>
@@ -2013,7 +2021,7 @@ namespace NuoYan.Archive
                 }
                 foreach (var data in m_ArchiveList)
                 {
-                    data.SetData(m_CurrentArchiveData1, m_CurrentArchiveData2, m_CurrentArchiveData3);
+                    data.GetData(m_CurrentArchiveData1, m_CurrentArchiveData2, m_CurrentArchiveData3);
                 }
             }
             catch (System.Exception ex)
@@ -2038,7 +2046,7 @@ namespace NuoYan.Archive
                 m_CurrentArchiveData3 = new T3();
                 foreach (var data in m_ArchiveList)
                 {
-                    data.GetData(m_CurrentArchiveData1, m_CurrentArchiveData2, m_CurrentArchiveData3);
+                    data.SetData(m_CurrentArchiveData1, m_CurrentArchiveData2, m_CurrentArchiveData3);
                 }
                 m_CurrentArchiveData1.TimeStamp = archiveTable.TimeStamp;
                 m_CurrentArchiveData2.TimeStamp = archiveTable.TimeStamp;
@@ -2131,7 +2139,7 @@ namespace NuoYan.Archive
                 m_CurrentArchiveData3 = new T3();
                 foreach (var data in m_ArchiveList)
                 {
-                    data.GetData(m_CurrentArchiveData1, m_CurrentArchiveData2, m_CurrentArchiveData3);
+                    data.SetData(m_CurrentArchiveData1, m_CurrentArchiveData2, m_CurrentArchiveData3);
                 }
                 m_CurrentArchiveData1.TimeStamp = archiveTable.TimeStamp;
                 m_CurrentArchiveData2.TimeStamp = archiveTable.TimeStamp;
@@ -2227,7 +2235,7 @@ namespace NuoYan.Archive
                     m_CurrentArchiveData3 = new T3();
                     foreach (var data in m_ArchiveList)
                     {
-                        data.GetData(m_CurrentArchiveData1, m_CurrentArchiveData2, m_CurrentArchiveData3);
+                        data.SetData(m_CurrentArchiveData1, m_CurrentArchiveData2, m_CurrentArchiveData3);
                     }
                     m_CurrentArchiveData1.TimeStamp = archiveTable.TimeStamp;
                     m_CurrentArchiveData2.TimeStamp = archiveTable.TimeStamp;
@@ -2308,7 +2316,7 @@ namespace NuoYan.Archive
                     m_CurrentArchiveData3 = new T3();
                     foreach (var data in m_ArchiveList)
                     {
-                        data.GetData(m_CurrentArchiveData1, m_CurrentArchiveData2, m_CurrentArchiveData3);
+                        data.SetData(m_CurrentArchiveData1, m_CurrentArchiveData2, m_CurrentArchiveData3);
                     }
                     m_CurrentArchiveData1.TimeStamp = archiveTable.TimeStamp;
                     m_CurrentArchiveData2.TimeStamp = archiveTable.TimeStamp;
@@ -2466,7 +2474,7 @@ namespace NuoYan.Archive
                         }
                         foreach (var data in m_ArchiveList)
                         {
-                            data.SetData(m_CurrentArchiveData1, m_CurrentArchiveData2, m_CurrentArchiveData3);
+                            data.GetData(m_CurrentArchiveData1, m_CurrentArchiveData2, m_CurrentArchiveData3);
                         }
                     }
                     else
