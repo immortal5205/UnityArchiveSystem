@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 namespace NuoYan.Archive
@@ -123,3 +124,4 @@ namespace NuoYan.Archive
         }
     }
 }
+#endif

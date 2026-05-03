@@ -118,6 +118,98 @@ namespace NuoYan.Archive
         {
             return new SerializeVector3Int(v.x, v.y, v.z);
         }
+
+        //相等
+        public static bool operator ==(SerializeVector3Int lhs, SerializeVector3Int rhs)
+        {
+            return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z;
+        }
+        public static bool operator !=(SerializeVector3Int lhs, SerializeVector3Int rhs)
+        {
+            return lhs.x != rhs.x || lhs.y != rhs.y || lhs.z != rhs.z;
+        }
+
+        public static SerializeVector3Int Zero => new SerializeVector3Int(0, 0, 0);
+        public static SerializeVector3Int One => new SerializeVector3Int(1, 1, 1);
+        public static SerializeVector3Int Up => new SerializeVector3Int(0, 1, 0);
+        public static SerializeVector3Int Down => new SerializeVector3Int(0, -1, 0);
+        public static SerializeVector3Int Left => new SerializeVector3Int(-1, 0, 0);
+        public static SerializeVector3Int Right => new SerializeVector3Int(1, 0, 0);
+        public static SerializeVector3Int Forward => new SerializeVector3Int(0, 0, 1);
+        public static SerializeVector3Int Back => new SerializeVector3Int(0, 0, -1);
+        public static SerializeVector3Int PositiveInfinity => new SerializeVector3Int(int.MaxValue, int.MaxValue, int.MaxValue);
+        public static SerializeVector3Int NegativeInfinity => new SerializeVector3Int(int.MinValue, int.MinValue, int.MinValue);
+
+        public static SerializeVector3Int operator +(SerializeVector3Int lhs, SerializeVector3Int rhs)
+        {
+            return new SerializeVector3Int(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
+        }
+        public static SerializeVector3Int operator -(SerializeVector3Int lhs, SerializeVector3Int rhs)
+        {
+            return new SerializeVector3Int(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
+        }
+        public static SerializeVector3Int operator *(SerializeVector3Int lhs, SerializeVector3Int rhs)
+        {
+            return new SerializeVector3Int(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
+        }
+        public static SerializeVector3Int operator /(SerializeVector3Int lhs, SerializeVector3Int rhs)
+        {
+            return new SerializeVector3Int(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
+        }
+        public static SerializeVector3Int operator %(SerializeVector3Int lhs, SerializeVector3Int rhs)
+        {
+            return new SerializeVector3Int(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);
+        }
+        public static SerializeVector3Int operator +(SerializeVector3Int lhs, int rhs)
+        {
+            return new SerializeVector3Int(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs);
+        }
+        public static SerializeVector3Int operator -(SerializeVector3Int lhs, int rhs)
+        {
+            return new SerializeVector3Int(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs);
+        }
+        public static SerializeVector3Int operator *(SerializeVector3Int lhs, int rhs)
+        {
+            return new SerializeVector3Int(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
+        }
+        public static SerializeVector3Int operator /(SerializeVector3Int lhs, int rhs)
+        {
+            return new SerializeVector3Int(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
+        }
+        public static SerializeVector3Int operator %(SerializeVector3Int lhs, int rhs)
+        {
+            return new SerializeVector3Int(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs);
+        }
+        public static SerializeVector3Int operator +(int lhs, SerializeVector3Int rhs)
+        {
+            return new SerializeVector3Int(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
+        }
+        public static SerializeVector3Int operator -(int lhs, SerializeVector3Int rhs)
+        {
+            return new SerializeVector3Int(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
+        }
+        public static SerializeVector3Int operator *(int lhs, SerializeVector3Int rhs)
+        {
+            return new SerializeVector3Int(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
+        }
+        public static SerializeVector3Int operator /(int lhs, SerializeVector3Int rhs)
+        {
+            return new SerializeVector3Int(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
+        }
+        public static SerializeVector3Int operator %(int lhs, SerializeVector3Int rhs)
+        {
+            return new SerializeVector3Int(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is SerializeVector3Int other && this == other;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(x, y, z);
+        }
     }
 
     [Serializable]
@@ -146,6 +238,14 @@ namespace NuoYan.Archive
         {
             return $"({x}, {y})";
         }
+        public static SerializeVector2Int Zero => new SerializeVector2Int(0, 0);
+        public static SerializeVector2Int One => new SerializeVector2Int(1, 1);
+        public static SerializeVector2Int Up => new SerializeVector2Int(0, 1);
+        public static SerializeVector2Int Down => new SerializeVector2Int(0, -1);
+        public static SerializeVector2Int Left => new SerializeVector2Int(-1, 0);
+        public static SerializeVector2Int Right => new SerializeVector2Int(1, 0);
+        public static SerializeVector2Int PositiveInfinity => new SerializeVector2Int(int.MaxValue, int.MaxValue);
+        public static SerializeVector2Int NegativeInfinity => new SerializeVector2Int(int.MinValue, int.MinValue);
 
         public static implicit operator UnityEngine.Vector2Int(SerializeVector2Int v)
         {
@@ -154,6 +254,26 @@ namespace NuoYan.Archive
         public static implicit operator SerializeVector2Int(UnityEngine.Vector2Int v)
         {
             return new SerializeVector2Int(v.x, v.y);
+        }
+
+        //相等
+        public static bool operator ==(SerializeVector2Int lhs, SerializeVector2Int rhs)
+        {
+            return lhs.x == rhs.x && lhs.y == rhs.y;
+        }
+        public static bool operator !=(SerializeVector2Int lhs, SerializeVector2Int rhs)
+        {
+            return lhs.x != rhs.x || lhs.y != rhs.y;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is SerializeVector2Int other && this == other;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(x, y);
         }
     }
 
@@ -198,6 +318,8 @@ namespace NuoYan.Archive
         {
             return new SerializeQuaternion(v.x, v.y, v.z, v.w);
         }
+
+        public static SerializeQuaternion identity => new SerializeQuaternion(0, 0, 0, 1);
     }
     [Serializable]
     public struct SerializeTransform
